@@ -1,24 +1,46 @@
 const html = document.querySelector('html');
-const focobt = document.querySelector('.app__card-button--foco')
-const curtobt = document.querySelector('.app__card-button--curto')
-const longobt = document.querySelector('.app__card-button--longo')
+const focoBt = document.querySelector('.app__card-button--foco')
+const curtoBt = document.querySelector('.app__card-button--curto')
+const longoBt = document.querySelector('.app__card-button--longo')
 const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
+const startPauseBt = document.querySelector('#start-pause')
+const musicaFocoInput = document.querySelector('#alternar-musica')
+const iniciarOuPausarBt =  document.querySelector('#start-pause span')
+const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon')
+const tempoNaTela = document.querySelector('#timer')
+const musica = new Audio('./sons/luna-rise-part-one.mp3')
+const iniciarContador = new Audio('./sons/play.wav')
+const pausarContador = new Audio('./sons/pause.mp3')
+const fimDoContador = new Audio('./sons/beep.mp3')
 
-focobt.addEventListener('click', () =>{
+let tempoDecorridoEmSegundos = 5
+let intervaloId = null
+
+musica.loop = true
+
+musicaFocoInput.addEventListener('change', () => {
+    if (musica.paused){
+        musica.play()
+    } else {
+        musica.pause()
+    }
+})
+
+focoBt.addEventListener('click', () =>{
     alterarContexto('foco')
-    focobt.classList.add('active')
+    focoBt.classList.add('active')
 })
 
-curtobt.addEventListener('click', () =>{
+curtoBt.addEventListener('click', () =>{
     alterarContexto('descanso-curto')
-    curtobt.classList.add('active')
+    curtoBt.classList.add('active')
 })
 
-longobt.addEventListener('click', () =>{
+longoBt.addEventListener('click', () =>{
     alterarContexto('descanso-longo')
-    longobt.classList.add('active')
+    longoBt.classList.add('active')
 })
 
 function alterarContexto (contexto) {
@@ -49,4 +71,36 @@ function alterarContexto (contexto) {
         default:
             break;
     }
+}
+
+const contagemRegressiva = () => {
+    if (tempoDecorridoEmSegundos <= 1){
+        fimDoContador.play()
+        alert('Tempo finalizado')
+        zerar()
+        return
+    }
+    tempoDecorridoEmSegundos -= 1
+    console.log('Temporizador: ' + tempoDecorridoEmSegundos)
+}
+
+startPauseBt.addEventListener('click', iniciarOuPausar)
+
+function iniciarOuPausar() {
+    if(intervaloId){
+        pausarContador.play()
+        zerar()
+        return
+    }
+    iniciarContador.play()
+    intervaloId = setInterval(contagemRegressiva, 1000)
+    iniciarOuPausarBt.textContent = 'Pausar'
+    iniciarOuPausarImg.src ="/imagens/pause.png"
+}
+
+function zerar() {
+    clearInterval(intervaloId)
+    iniciarOuPausarBt.textContent = 'Começar'
+    iniciarOuPausarImg.src ="/imagens/play_arrow.png"
+    intervaloId = null
 }
