@@ -80,6 +80,8 @@ function criarElementoTarefa(tarefa) {
 
 btnAdicionarTarefa.addEventListener('click', () => {
     formAdicionarTarefa.classList.toggle('hidden')
+    const isHidden = formAdicionarTarefa.classList.contains('hidden')
+    formAdicionarTarefa.setAttribute('aria-hidden', String(isHidden))
 })
 
 formAdicionarTarefa.addEventListener('submit', (evento) => {
@@ -93,6 +95,7 @@ formAdicionarTarefa.addEventListener('submit', (evento) => {
     atualizarTarefas()
     textArtea.value = ''
     formAdicionarTarefa.classList.add('hidden')
+    formAdicionarTarefa.setAttribute('aria-hidden', 'true')
 })
 
 tarefas.forEach(tarefa => {
