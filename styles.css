@@ -371,11 +371,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app__section-active-task-label {
-    font-family: Montserrat;
-    font-size: 1.25rem;
+    font-family: 'Unbounded', cursive;
+    font-size: 2.6rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%;
+    line-height: 120%;
+    color: var(--color-secondary);
+    margin: 0;
 }
 
 .app__section-task-list {
