@@ -18,6 +18,7 @@ O nosso querido projeto é uma aplicação web simples e interativa que permite 
 3. Visualizar Tarefas: As tarefas adicionadas estão todas lá, bonitas e organizadas, esperando por sua atenção.
 4. Marcar Tarefas como Completas: Quando uma tarefa é finalizada, ela muda de aparência. É a magia do CSS e JavaScript acontecendo!
 5. Remover Tarefas: Seja seletivo e remova apenas as tarefas completas ou jogue tudo para o alto e comece de novo com uma lista de tarefas limpa.
+6. Música: Um botão/interruptor mantém a trilha sonora sob controle, permitindo ativar ou pausar as melodias que embalam a jornada.
 
 ## O Caldeirão de Técnicas e Tecnologias
 
