@@ -348,6 +348,13 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 150%;
 }
 
+.app__section-active-task-card {
+    width: 100%;
+    cursor: default;
+    margin-bottom: 0;
+    flex: 1 1 auto;
+}
+
 .app__section-tasks-heading {
     font-size: 2.6rem;
     font-style: normal;
